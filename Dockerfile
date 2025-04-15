@@ -48,7 +48,7 @@ WORKDIR /app
 # Sets up /app as the working directory
 
 # Copy all JAR files into /app/ (without renaming the file)
-COPY --from=build /app/build/libs/*.jar /app/
+COPY --from=builder /app/build/libs/*.jar /app/
 # Copies the JAR file from the previous build stage to the current image
 # --from=build specifies the build stage to copy from
 
