@@ -3,6 +3,13 @@ FROM node:22-alpine AS builder
 # Set the working directory inside the container
 WORKDIR /app
 
+# Install OpenJDK 17 for the builder stage
+RUN apk add --no-cache openjdk17
+
+# Set JAVA_HOME environment variable
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+ENV PATH=$JAVA_HOME/bin:$PATH
+
 # Copy only the necessary Gradle files first
 # Build optimization technique (layer caching)
 # By copying only the Gradle-related files first, we leverage Dockers caching system.
